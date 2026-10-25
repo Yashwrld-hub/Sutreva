@@ -1,0 +1,38 @@
+{
+  "template_name": "Shell & Tube Heat Exchanger Audit",
+  "equipment_profile": "heat_exchanger",
+  "fields": [
+    {
+      "field_name": "heat_duty_kw",
+      "label": "Heat Duty",
+      "unit": "kW",
+      "min_value": 10.0,
+      "required": true
+    },
+    {
+      "field_name": "heat_transfer_area_m2",
+      "label": "Heat Transfer Area",
+      "unit": "m2",
+      "required": true
+    },
+    {
+      "field_name": "shell_design_pressure_bar",
+      "label": "Shell Design Pressure",
+      "unit": "bar",
+      "max_value": 50.0,
+      "required": true
+    },
+    {
+      "field_name": "shell_material",
+      "label": "Shell Material",
+      "expected_value": "SA-516 Gr 70",
+      "required": true
+    },
+    {
+      "field_name": "tube_material",
+      "label": "Tube Material",
+      "expected_value": "SA-240 316L",
+      "required": true
+    }
+  ]
+}

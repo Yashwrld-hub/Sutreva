@@ -1,0 +1,21 @@
+# Sutreva / NeMo Evaluator model-regression configuration.
+# This is separate from Sutreva's domain-specific evidence benchmark.
+#
+# Required environment variable (never commit a secret):
+#   NEBIUS_API_KEY
+
+services:
+  sutreva_nemotron:
+    type: api
+    url: https://api.tokenfactory.nebius.com/v1/chat/completions
+    protocol: chat_completions
+    model: nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B
+    api_key: ${NEBIUS_API_KEY}
+
+benchmarks:
+  - name: mmlu_instruct
+    max_problems: 3
+    repeats: 1
+    solver:
+      type: simple
+      service: sutreva_nemotron

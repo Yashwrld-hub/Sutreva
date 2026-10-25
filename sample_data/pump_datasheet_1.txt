@@ -1,0 +1,27 @@
+CENTRIFUGAL PUMP PROCESS DATA SHEET
+API 610 11th Edition (ISO 13709)
+
+Pump Tag: 12P-201A
+Service: Boiler Feed Water
+Manufacturer: Ridgeline Pumps Co.
+Model: RX-450
+
+PERFORMANCE
+- Rated Power: 650 kW
+- Rated Speed: 3560 RPM
+- NPSHA Available: 6.2 m
+- NPSHR at Rated Flow: 4.1 m
+
+MATERIALS
+- Casing / Barrel Material: A216WCB
+- Impeller Material: A487CA6NM
+- Shaft Material: A276-410
+
+DRIVER
+- Driver Type: Induction Motor
+- Motor Rating: 900 HP
+- Enclosure: WPII
+
+NOTES
+- Site altitude: 580 m
+- Ambient temperature range: 5 to 42 deg C

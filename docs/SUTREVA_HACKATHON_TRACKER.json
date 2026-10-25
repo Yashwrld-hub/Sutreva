@@ -1,0 +1,129 @@
+{
+  "project": "Sutreva",
+  "legacy_name": "OEM Audit Copilot",
+  "hackathon": {
+    "name": "Nebius x NVIDIA Global AI Hackathon",
+    "track": "Best Apps and Agents",
+    "submission_deadline_pt": "2026-10-30T10:00:00-07:00",
+    "submission_deadline_note": "Official Devpost deadline; verify the live submission page before final submission."
+  },
+  "required_platform": {
+    "primary": "Nebius Token Factory",
+    "alternative": "Nebius AI Cloud",
+    "current_runtime": "Nebius Token Factory API"
+  },
+  "nvidia_model": {
+    "provider": "NVIDIA",
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "current_status": "integrated via ai_provider.py"
+  },
+  "readiness": {
+    "working_software": "in_progress",
+    "nebius_runtime_call": "implemented",
+    "nvidia_open_source_model": "implemented",
+    "multi_step_ai_workflow": "implemented_v1",
+    "meaningful_nemotron_role": "implemented_v1",
+    "public_working_demo": "deployment_ready_local_rehearsal",
+    "public_code_repository": "not_started",
+    "open_source_license": "not_started",
+    "submission_readme": "in_progress",
+    "demo_video_under_3_minutes": "not_started",
+    "nebius_nvidia_feedback": "not_started",
+    "existing_project_update_explanation": "in_progress",
+    "ip_and_dependency_review": "not_started",
+    "evaluation_evidence": "implemented_v1",
+    "nemo_evaluator_regression": "scaffolded_v1",
+    "engineering_intelligence_layer": "implemented_v1",
+    "domain_aware_engineering_intelligence": "implemented_v1",
+    "human_feedback_learning_loop": "implemented_v1",
+    "reviewer_feedback_dataset": "implemented_v1",
+    "evaluation_flywheel": "implemented_v1",
+    "curated_evaluation_set": "implemented_v1"
+  },
+  "architecture_gates": [
+    "Keep Sutreva's deterministic extraction and evidence layer independent of model-provider code.",
+    "Make Nemotron contribute to a material step in the engineering-audit workflow, not merely a cosmetic chatbot layer.",
+    "Record model/provider/prompt/template versions for reproducibility.",
+    "Preserve human review as the final engineering disposition.",
+    "Demonstrate an end-to-end workflow in the public demo, not only an isolated model call.",
+    "Keep the advisory Nemotron reasoning pass non-authoritative so a model failure cannot silently alter deterministic engineering status.",
+    "Keep domain-specific evidence quality metrics separate from generic model benchmarks; store both for the final submission narrative.",
+    "Keep equipment-domain profiles contextual and configurable; do not embed hidden engineering acceptance limits outside the auditable templates.",
+    "Keep reviewer feedback append-only and evaluation-controlled; never auto-train or mutate model behavior from production feedback."
+  ],
+  "submission_artifacts": [
+    "Working demo URL",
+    "Public source repository URL",
+    "Open-source license",
+    "README with installation and runtime instructions",
+    "Project description",
+    "Public YouTube demonstration video under 3 minutes",
+    "Technology usage explanation for Nebius and NVIDIA",
+    "Specific feedback on Nebius Token Factory / AI Cloud / NVIDIA technologies used",
+    "Written explanation of significant updates made during the hackathon submission period"
+  ],
+  "source": {
+    "rules_url": "https://nebiusglobalaihackathon.devpost.com/rules",
+    "overview_url": "https://nebiusglobalaihackathon.devpost.com/",
+    "judging_update_url": "https://nebiusglobalaihackathon.devpost.com/updates/46204-heres-how-judging-works",
+    "builder_feedback_update_url": "https://nebiusglobalaihackathon.devpost.com/updates/46205-how-to-build-a-winning-project"
+  },
+  "milestones": [
+    {
+      "session": 46,
+      "name": "Evidence-grounded Nemotron intelligence pipeline",
+      "status": "implemented",
+      "summary": "Added an advisory second reasoning pass over extracted values, rules, deterministic rows, and source evidence; deterministic audit status remains authoritative."
+    },
+    {
+      "session": 47,
+      "name": "Evidence intelligence and evaluation baseline",
+      "status": "implemented_v1",
+      "summary": "Added explicit evidence references to Nemotron field assessments, an 8-case domain benchmark, scorer/self-check, and a runnable NeMo Evaluator smoke configuration."
+    },
+    {
+      "session": 48,
+      "name": "Engineering intelligence layer v1",
+      "status": "implemented_v1",
+      "summary": "Added deterministic engineering exception classification, severity, impact, recommended action, and optional Nemotron risk enrichment without changing authoritative audit status."
+    },
+    {
+      "session": 49,
+      "name": "Domain-aware engineering rules v1",
+      "status": "implemented_v1",
+      "summary": "Added equipment-family profiles for centrifugal pumps, mechanical seals, and lubrication registers; surfaced domain role, focus, and priority without changing authoritative audit status."
+    }
+  ],
+  "implementation_milestones": [
+    {
+      "session": "50",
+      "capability": "Historical engineering pattern intelligence",
+      "status": "implemented",
+      "note": "Advisory use of closed review history; does not change authoritative audit status."
+    },
+    {
+      "session": "51",
+      "capability": "Human feedback learning loop",
+      "status": "implemented_v1",
+      "note": "Reviewer saves create append-only feedback events; closed dispositions become evaluation candidates. Default exports exclude reviewer identity and no automatic training occurs."
+    },
+    {
+      "session": "52",
+      "capability": "Controlled evaluation flywheel",
+      "status": "implemented_v1",
+      "note": "Closed reviewer feedback can be explicitly curated into persistent gold cases; recorded Nemotron outputs can be scored for assessment, risk, evidence grounding, and status preservation before model/prompt changes are promoted."
+    },
+    {
+      "session": "53",
+      "capability": "Nebius deployment and hackathon demo architecture",
+      "status": "implemented_v1",
+      "note": "Added container deployment artifacts, runtime configuration, live Token Factory preflight, provider provenance in the UI, and a three-minute demo runbook. No cloud deployment is claimed from the local build."
+    },
+    {
+      "session": "54",
+      "capability": "Hackathon demo hardening",
+      "status": "implemented_v1",
+      "note": "Added a synthetic centrifugal-pump PDF demo fixture, guided demo navigation, an offline end-to-end rehearsal script, explicit truthfulness/acceptance criteria, and a deterministic-override narrative-mention regression fix discovered during rehearsal."
+    }
+  ]
+}

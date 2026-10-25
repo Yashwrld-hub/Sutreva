@@ -1,0 +1,2 @@
+case_id,equipment_tag,field,human_value,tool_value,human_status,tool_status,value_match,status_match,evidence_present,final_disposition,reviewer_name,review_date,notes
+CASE-001,P-001,discharge_pressure,,,,,,,,,,,

@@ -1,0 +1,46 @@
+{
+  "equipment_profile": "lubrication_register",
+  "template_name": "Lube Oil List Audit",
+  "sample_file": "sample_data/lube_oil_datasheet_1.txt",
+  "fields": [
+    {
+      "field_name": "equipment_description",
+      "label": "Equipment Description",
+      "unit": null,
+      "required": true
+    },
+    {
+      "field_name": "area_to_be_lubricated",
+      "label": "Area to be Lubricated",
+      "unit": null,
+      "required": true
+    },
+    {
+      "field_name": "volume_ltrs",
+      "label": "Volume",
+      "unit": "Litres",
+      "required": true
+    },
+    {
+      "field_name": "uom",
+      "label": "UOM",
+      "unit": null,
+      "required": true,
+      "acceptable_values": ["Litres"]
+    },
+    {
+      "field_name": "recomm_lubricant",
+      "label": "Recommended Lubricant",
+      "unit": null,
+      "required": true,
+      "acceptable_values": ["Shell Omala S2 G220", "220# Gear Oil", "32# Machine Oil"]
+    },
+    {
+      "field_name": "recomm_grade",
+      "label": "Recommended Grade",
+      "unit": null,
+      "required": true,
+      "acceptable_values": ["ISO VG220", "ISO VG32", "ISO VG68"]
+    }
+  ]
+}

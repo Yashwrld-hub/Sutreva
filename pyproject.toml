@@ -1,0 +1,12 @@
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+exclude = ["sample_data", "pilot_workspace"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/hackathon_demo_rehearsal.py" = ["E402", "I001"]
+"scripts/nebius_preflight.py" = ["E402"]

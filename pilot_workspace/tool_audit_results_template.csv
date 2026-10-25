@@ -1,0 +1,2 @@
+case_id,equipment_tag,field,tool_value,tool_unit,tool_status,evidence_reference,run_id,reviewer_disposition,reviewer_name,review_date,review_notes
+CASE-001,P-001,discharge_pressure,,,,,,,,,

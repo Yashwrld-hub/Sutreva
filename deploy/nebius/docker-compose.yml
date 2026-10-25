@@ -1,0 +1,16 @@
+services:
+  sutreva:
+    build:
+      context: ../..
+      dockerfile: deploy/nebius/Dockerfile
+    ports:
+      - "8501:8501"
+    env_file:
+      - ../../.env
+    environment:
+      SUTREVA_ENV: production
+      SUTREVA_MODEL_PROVIDER: nebius_nemotron
+      NEBIUS_API_BASE_URL: ${NEBIUS_API_BASE_URL:-https://api.tokenfactory.nebius.com/v1/}
+      NEBIUS_MODEL_NAME: ${NEBIUS_MODEL_NAME:-nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B}
+      NEBIUS_REQUEST_TIMEOUT_S: ${NEBIUS_REQUEST_TIMEOUT_S:-90}
+    restart: unless-stopped

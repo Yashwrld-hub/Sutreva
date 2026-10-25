@@ -1,0 +1,2 @@
+case_id,equipment_tag,field,source_document,page_or_location,human_value,human_unit,human_status,reviewer_name,review_date,review_notes
+CASE-001,P-001,discharge_pressure,document.pdf,page/section,,,,,,

@@ -1,0 +1,273 @@
+{
+  "product": "Sutreva",
+  "baseline": "Session 59 code-health/performance build",
+  "purpose": "Machine-readable feature-to-code/debug index for targeted maintenance.",
+  "behavioral_change": true,
+  "features": {
+    "sidebar": {
+      "start": "app.py:349-403",
+      "entry_points": [
+        "list_templates",
+        "load_schema",
+        "st.session_state.active_view",
+        "st.rerun"
+      ],
+      "tests": [
+        "tests/test_app_dashboard_integration.py",
+        "tests/test_ui_launch_design.py"
+      ]
+    },
+    "workspace_navigation": {
+      "start": "app.py:427-434",
+      "entry_point": "st.radio(Workspace)",
+      "tests": [
+        "tests/test_app_dashboard_integration.py",
+        "tests/test_ui_launch_design.py"
+      ]
+    },
+    "single_audit": {
+      "start": "app.py:500-561",
+      "entry_points": [
+        "run_pdf_audit_with_evidence",
+        "run_batch_audit"
+      ],
+      "tests": [
+        "tests/test_core.py",
+        "tests/test_batch.py",
+        "tests/test_evidence.py"
+      ]
+    },
+    "pdf_extraction": {
+      "start": "core.py:178-207",
+      "entry_points": [
+        "_extract_pdf_page_texts",
+        "extract_pdf_pages_with_evidence"
+      ],
+      "tests": [
+        "tests/test_core.py",
+        "tests/test_evidence.py"
+      ]
+    },
+    "checkbox_driver_type": {
+      "start": "core.py:296-551",
+      "entry_points": [
+        "_filled_checkbox_markers",
+        "_rendered_checkbox_selected",
+        "_extract_checkbox_markers",
+        "_checkbox_overrides"
+      ],
+      "tests": [
+        "tests/test_checkbox_extraction.py",
+        "tests/test_deterministic_text_overrides.py"
+      ]
+    },
+    "model_json": {
+      "start": "core.py:717-783",
+      "entry_points": [
+        "call_model",
+        "parse_json_safely"
+      ],
+      "tests": [
+        "tests/test_core.py"
+      ]
+    },
+    "rule_comparison": {
+      "start": "core.py:786-865",
+      "entry_points": [
+        "_rule_for_result",
+        "normalize_numeric_value",
+        "_evidence_supports_value",
+        "compare_against_schema"
+      ],
+      "tests": [
+        "tests/test_core.py",
+        "tests/test_units.py",
+        "tests/test_evidence.py"
+      ]
+    },
+    "bulk_audit": {
+      "start": "app.py:623-696",
+      "entry_points": [
+        "guess_column_mapping",
+        "guess_identifier_column",
+        "run_bulk_audit"
+      ],
+      "tests": [
+        "tests/test_bulk.py",
+        "tests/test_batch.py"
+      ]
+    },
+    "review_queue": {
+      "start": "app.py:776-827",
+      "entry_points": [
+        "build_review_queue",
+        "update_review_item",
+        "upsert_items"
+      ],
+      "tests": [
+        "tests/test_review_queue.py",
+        "tests/test_governance.py"
+      ]
+    },
+    "templates": {
+      "start": "app.py:828-905",
+      "entry_points": [
+        "save_template",
+        "load_schema",
+        "list_templates"
+      ],
+      "tests": [
+        "tests/test_core.py"
+      ]
+    },
+    "exports": {
+      "start": "exports.py:92-473",
+      "entry_points": [
+        "to_csv_bytes",
+        "to_excel_bytes",
+        "to_pdf_bytes",
+        "to_excel_bytes_bulk",
+        "to_pdf_bytes_bulk",
+        "to_csv_bytes_bulk",
+        "suggested_filename"
+      ],
+      "tests": [
+        "tests/test_exports.py",
+        "tests/test_bulk.py"
+      ]
+    },
+    "pilot": {
+      "start": "app.py:696-776",
+      "entry_points": [
+        "build_pilot_dashboard",
+        "summarize_results",
+        "compare_cycle_times",
+        "build_pilot_report"
+      ],
+      "tests": [
+        "tests/test_pilot_dashboard.py",
+        "tests/test_pilot_metrics.py",
+        "tests/test_pilot_report.py",
+        "tests/test_pilot_benchmark.py",
+        "tests/test_pilot_validation.py"
+      ]
+    },
+    "theme": {
+      "start": "app.py theme CSS + .streamlit/config.toml",
+      "entry_points": [
+        "native Streamlit Light/Dark theme",
+        "custom CSS inheritance"
+      ],
+      "tests": [
+        "tests/test_theme.py"
+      ]
+    },
+    "lifecycle": {
+      "start": "lifecycle.py:16-35",
+      "entry_points": [
+        "make_run_id",
+        "create_audit_run",
+        "attach_run_context"
+      ],
+      "tests": [
+        "tests/test_lifecycle.py",
+        "tests/test_traceability_integrity.py"
+      ]
+    },
+    "contracts": {
+      "start": "extraction_contract.py:6-53",
+      "entry_points": [
+        "EvidenceRef",
+        "ExtractionRecord",
+        "validate_record",
+        "records_from_extracted"
+      ],
+      "tests": [
+        "tests/test_contract.py",
+        "tests/test_traceability_integrity.py"
+      ]
+    },
+    "engineering_domain_rules": {
+      "start": "domain_rules.py + engineering_intelligence.py",
+      "entry_points": [
+        "infer_profile_id",
+        "get_domain_profile",
+        "domain_context_for_field",
+        "analyze_engineering_rows"
+      ],
+      "profiles": [
+        "centrifugal_pump",
+        "mechanical_seal",
+        "lubrication_register"
+      ],
+      "tests": [
+        "tests/test_domain_rules.py",
+        "tests/test_engineering_intelligence.py"
+      ]
+    },
+    "results_rendering": {
+      "start": "app.py \u2192 results_ui.py",
+      "entry_points": [
+        "render_group_results",
+        "_render_file_centric_table",
+        "_render_field_review",
+        "_render_exports"
+      ],
+      "supporting_modules": [
+        "results_view.py",
+        "engineering_intelligence.py",
+        "pattern_intelligence.py",
+        "exports.py"
+      ],
+      "tests": [
+        "tests/test_ui_launch_design.py",
+        "tests/test_results_view.py",
+        "tests/test_exports.py"
+      ]
+    }
+  },
+  "debug_rules": {
+    "sidebar_lag": [
+      "app.py:349-403",
+      "core.list_templates",
+      "core.load_schema",
+      "st.rerun"
+    ],
+    "json_parse_error": [
+      "core.parse_json_safely",
+      "core.call_model",
+      "raw_model_output"
+    ],
+    "driver_type_missing": [
+      "core._extract_checkbox_markers",
+      "core._checkbox_overrides",
+      "core._deterministic_overrides"
+    ],
+    "wrong_status": [
+      "core.compare_against_schema",
+      "core._rule_for_result",
+      "core.normalize_numeric_value",
+      "core._evidence_supports_value"
+    ],
+    "export_filename_or_data": [
+      "exports.suggested_filename",
+      "exports.to_excel_bytes",
+      "exports.to_pdf_bytes",
+      "exports.to_csv_bytes"
+    ]
+  },
+  "legacy_branding_note": "The product direction is Sutreva; this Session 41 codebase still contains legacy OEM Audit Copilot naming. Branding migration is not part of this mapping-only change.",
+  "repair_notes": {
+    "theme": "app.py custom CSS inherits native Streamlit theme; global --st-* tokens and runtime theme snapshots are not used.",
+    "landing_navigation": "app.py Open audit workspace uses _navigate_to callback and workspace_nav radio synchronization.",
+    "branding": "Sutreva is active product identity; legacy OEM Audit Copilot retained as code comment in product_brand.py.",
+    "domain_context": "Equipment-domain context is advisory metadata only; configured audit template rules remain authoritative."
+  },
+  "session_55_live_path": {
+    "unit_normalization": "core.compare_against_schema -> units.normalize_numeric_value/convert_value",
+    "extraction_contract": "core.run_audit -> extraction_contract.records_from_extracted",
+    "conflict_detection": "core.run_audit -> conflict_detection.detect_conflicts",
+    "governance": "app.review_save -> governance.ApprovalEvent -> review_store.record_approval_event"
+  },
+  "latest_session": "Session 59 \u2014 Code Health, Performance & Dependency Optimization"
+}

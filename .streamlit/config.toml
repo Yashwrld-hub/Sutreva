@@ -1,0 +1,64 @@
+[theme]
+# Legacy OEM Audit Copilot theme configuration retained as the visual baseline;
+# active product identity is Sutreva.
+base = "light"
+font = "sans-serif"
+baseRadius = "medium"
+buttonRadius = "medium"
+showSidebarBorder = true
+showWidgetBorder = true
+
+[theme.light]
+primaryColor = "#4F46E5"
+backgroundColor = "#EEF2FF"
+secondaryBackgroundColor = "#F8F9FF"
+textColor = "#1E1B4B"
+borderColor = "#C7D2FE"
+linkColor = "#4338CA"
+linkUnderline = false
+codeTextColor = "#312E81"
+codeBackgroundColor = "#E8ECFF"
+blueColor = "#4F46E5"
+greenColor = "#28724F"
+orangeColor = "#A86F16"
+redColor = "#B13E4A"
+violetColor = "#6D5BD0"
+grayColor = "#64748B"
+dataframeHeaderBackgroundColor = "#E7EBFF"
+
+[theme.dark]
+primaryColor = "#818CF8"
+backgroundColor = "#0B1020"
+secondaryBackgroundColor = "#151C31"
+textColor = "#EEF2FF"
+borderColor = "#303B5E"
+linkColor = "#A5B4FC"
+linkUnderline = false
+codeTextColor = "#C7D2FE"
+codeBackgroundColor = "#11182B"
+blueColor = "#818CF8"
+greenColor = "#65D39C"
+orangeColor = "#F1C56D"
+redColor = "#FF8A95"
+violetColor = "#A99BF4"
+grayColor = "#AEB8D4"
+dataframeHeaderBackgroundColor = "#1A2340"
+
+[theme.sidebar]
+showWidgetBorder = true
+
+[theme.light.sidebar]
+primaryColor = "#4338CA"
+backgroundColor = "#E3E8FA"
+secondaryBackgroundColor = "#F0F2FC"
+textColor = "#1E1B4B"
+borderColor = "#C7D2FE"
+linkColor = "#3730A3"
+
+[theme.dark.sidebar]
+primaryColor = "#818CF8"
+backgroundColor = "#080D1A"
+secondaryBackgroundColor = "#10162A"
+textColor = "#EEF2FF"
+borderColor = "#303B5E"
+linkColor = "#A5B4FC"

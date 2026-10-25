@@ -1,0 +1,2 @@
+python -c "from pathlib import Path; p = Path('domain_rules.py'); t = p.read_text(encoding='utf-8').replace('label=\"Centrifugal / Positive-Displacement Pump\"', 'label=\"Centrifugal Pump\"').replace('label=\"Mechanical Seal (API 682)\"', 'label=\"Mechanical Seal\"'); p.write_text(t, encoding='utf-8'); print('[OK] Restored exact profile labels in domain_rules.py')"
+python -m pytest

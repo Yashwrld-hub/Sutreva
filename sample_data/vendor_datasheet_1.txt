@@ -1,0 +1,19 @@
+FLOWSEAL INDUSTRIES - MECHANICAL SEAL DATA SHEET
+Model: FS-A21 Cartridge Seal
+Order Ref: PO-88213
+
+Design Data:
+- Seal Type: Single Cartridge, Balanced
+- Seal Face Material: Silicon Carbide vs Silicon Carbide
+- Secondary Seal: FKM O-Rings
+- Metal Parts: Duplex Stainless Steel
+
+Operating Conditions:
+- Maximum Operating Temperature: 180 deg C
+- Shaft Diameter: 45 mm
+- Rotation Direction: Clockwise (viewed from drive end)
+- Seal Chamber Pressure (max observed): 9 bar
+
+Notes:
+- Suitable for hydrocarbon service per general duty guidelines.
+- Flush plan to be confirmed by end user based on process conditions.

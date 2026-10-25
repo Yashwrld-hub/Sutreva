@@ -1,0 +1,15 @@
+LUBRICATION DATA SHEET
+Equipment Tag: MA-EPE255-F000643A/B
+Equipment Description: Mg-Si Roots Blower A
+Manufacturer: Zhangqiu Fengyuan Machinery Co Ltd
+
+Lubrication Point: Main fuel tank
+Area to be Lubricated: Main fuel tank
+Volume: 45.6
+UOM: Litres
+Recommended Lubricant: Shell Omala S2 G220
+Recommended Grade: ISO VG220
+
+Notes:
+- Auxiliary fuel tank on the same unit is a separate lubrication point (22.4 L)
+  and should be logged as its own line item in bulk audits.

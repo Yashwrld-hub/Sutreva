@@ -1,0 +1,61 @@
+{
+  "equipment_profile": "centrifugal_pump",
+  "template_name": "Centrifugal Pump Audit",
+  "sample_file": "sample_data/pump_datasheet_1.txt",
+  "fields": [
+    {
+      "field_name": "rated_power_kw",
+      "label": "Rated Power",
+      "unit": "kW",
+      "required": true,
+      "max_value": 700,
+      "deterministic_source_aliases": ["Motor power"]
+    },
+    {
+      "field_name": "npsha_available_m",
+      "label": "NPSHA Available",
+      "unit": "m",
+      "required": true,
+      "min_value": 5,
+      "extraction_aliases": ["N.P.S.H available", "NPSH available"]
+    },
+    {
+      "field_name": "casing_material",
+      "label": "Casing / Barrel Material",
+      "unit": null,
+      "required": true,
+      "acceptable_values": [
+        "A216WCB",
+        "A352LCB",
+        "A487CA6NM"
+      ],
+      "extraction_aliases": [
+        "BARREL / CASE",
+        "CASE / BARREL",
+        "CASING"
+      ]
+    },
+    {
+      "field_name": "shaft_material",
+      "label": "Shaft Material",
+      "unit": null,
+      "required": true,
+      "expected_value": "A276-410",
+      "extraction_aliases": [
+        "SHAFT"
+      ]
+    },
+    {
+      "field_name": "driver_type",
+      "label": "Driver Type",
+      "unit": null,
+      "required": true,
+      "acceptable_values": [
+        "Induction Motor",
+        "Steam Turbine",
+        "Gear"
+      ]
+    }
+  ],
+  "demo_file": "sample_data/hackathon_pump_demo.pdf"
+}

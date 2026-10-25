@@ -1,0 +1,45 @@
+{
+  "equipment_profile": "mechanical_seal",
+  "template_name": "Mechanical Seal Audit",
+  "fields": [
+    {
+      "field_name": "seal_face_material",
+      "label": "Seal Face Material",
+      "unit": null,
+      "required": true,
+      "acceptable_values": [
+        "Silicon Carbide",
+        "Tungsten Carbide",
+        "Carbon"
+      ]
+    },
+    {
+      "field_name": "max_operating_temp_c",
+      "label": "Max Operating Temp",
+      "unit": "C",
+      "required": true,
+      "max_value": 200
+    },
+    {
+      "field_name": "shaft_diameter_mm",
+      "label": "Shaft Diameter",
+      "unit": "mm",
+      "required": true,
+      "expected_value": 45
+    },
+    {
+      "field_name": "api_plan",
+      "label": "API Plan",
+      "unit": null,
+      "required": true,
+      "expected_value": "Plan 53B"
+    },
+    {
+      "field_name": "seal_chamber_pressure_bar",
+      "label": "Seal Chamber Pressure",
+      "unit": "bar",
+      "required": true,
+      "max_value": 8
+    }
+  ]
+}
