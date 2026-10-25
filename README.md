@@ -1,10 +1,17 @@
 # Sutreva — Evidence-Backed Engineering Document Intelligence
 
-Extracts technical parameters from OEM equipment datasheets (mechanical seals,
-centrifugal pumps, lube oil lists, spare parts lists, etc.) using NVIDIA's
-open-source Nemotron models via Nebius Token Factory, then checks them
-against a customizable, per-equipment-type standard template to flag missing,
-mismatched, or out-of-range values.
+Sutreva is an evidence-backed engineering document intelligence and audit
+platform designed for engineering, procurement, and construction (EPC)
+workflows across multiple disciplines. It helps teams extract technical
+specifications from vendor documents and structured engineering registers,
+compare them against configurable project requirements, identify discrepancies,
+and maintain traceable engineering review records.
+
+Powered by NVIDIA Nemotron through Nebius Token Factory, Sutreva combines
+AI-assisted extraction and optional advisory reasoning with deterministic
+engineering rules and human review. Current examples focus on mechanical and
+rotating-equipment documentation; broader discipline coverage requires
+appropriate templates, requirements, and validation.
 
 Built for the Nebius x NVIDIA Global AI Hackathon.
 
@@ -32,8 +39,8 @@ tool answers *"does what this document says meet our standard?"*
 1. Each file in `templates/` defines a company standard for one audit/equipment
    type (Mechanical Seal Audit, Centrifugal Pump Audit, etc.) — fully
    customizable by editing or adding a JSON file, no code changes needed.
-2. `extract.py` / `app.py` read a raw OEM datasheet (`.txt` or a
-   digitally-created `.pdf`), send it to a Nemotron model on Nebius Token
+2. `extract.py` / `app.py` read a supported engineering document (`.txt` or `.pdf`; scanned PDFs
+   may use best-effort OCR), send it to a Nemotron model on Nebius Token
    Factory with a structured extraction prompt scoped to the chosen
    template's fields, and get back JSON.
 3. The result is compared against the template's rules (acceptable values,
@@ -144,11 +151,28 @@ Sutreva is being prepared for the **Nebius x NVIDIA Global AI Hackathon** under 
 
 The official rules require the submitted project to run on Nebius Token Factory or Nebius AI Cloud, use at least one NVIDIA open-source model, provide a working demo/test build, public source repository and open-source license, README/setup instructions, and a public demonstration video under three minutes. See the live rules before submission: https://nebiusglobalaihackathon.devpost.com/rules
 
-## Model used
+## NVIDIA Nemotron + Nebius Token Factory
 
-`nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B` via Nebius Token Factory
-(`https://api.tokenfactory.nebius.com/v1/`) — chosen for fast, low-cost
-structured extraction suited to high-volume document processing.
+**Configured model:** `nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B`
+
+**Endpoint:** `https://api.tokenfactory.nebius.com/v1/`
+
+`ai_provider.py` calls Nebius Token Factory through its OpenAI-compatible
+API. For document audits, Nemotron generates candidate structured field values
+from source documents using the selected template. When enabled, a second
+Nemotron pass assesses the extracted fields against deterministic rule results
+and available evidence, producing advisory assessments and rationale for human
+review.
+
+**Separation of responsibilities:** `core.py` applies the configured template
+rules and remains authoritative for audit status. Nemotron's reasoning is
+advisory and must not silently override deterministic outcomes. A human reviewer
+remains responsible for final acceptance or escalation. Bulk auditing of
+already-structured `.xlsx` and `.csv` registers uses column mapping and
+deterministic comparisons rather than sending each row to the model.
+
+Live inference requires a valid `NEBIUS_API_KEY` in your local `.env` file.
+Never commit API keys or expose them in logs or screenshots.
 
 ## Adding a new audit template
 
@@ -165,10 +189,13 @@ All sample datasheets under `sample_data/` are synthetic, made-up documents
 
 ## Supported input formats
 
-- `.txt` — plain text
-- `.pdf` — digitally-created PDFs (e.g. exported from Word/Excel/CAD tools).
-  **Scanned or photographed PDFs are not yet supported** since they have no
-  extractable text layer — this needs OCR, which is a planned future feature.
+- `.txt` — plain text.
+- `.pdf` — digitally created PDFs. Scanned PDFs may be processed using
+  best-effort OCR when no usable text layer is available.
+
+OCR results depend on scan quality, orientation, layout, and text clarity.
+Always verify critical extracted values against the original document page.
+
 
 ## Running the tests
 
@@ -177,11 +204,13 @@ pip install -r requirements-dev.txt
 pytest
 ```
 
-207 tests cover the comparison logic (matched/missing/mismatched/out-of-range,
-including boundary values), template validation, the save/load/edit round trip,
-cache invalidation, the Excel/PDF/CSV exporters, the bulk-audit column-matching
-and row-processing logic, and the batch processor's concurrency, ordering, and
-per-file error isolation — all run offline, no API key or network access needed.
+The latest local regression run on 25 October 2026 passed **221 tests**.
+Re-run the test command above to validate your current checkout. The suite covers
+comparison logic (matched/missing/mismatched/out-of-range, including boundary
+values), template validation, save/load/edit behavior, cache invalidation,
+Excel/PDF/CSV exporters, bulk-audit column mapping and row processing, and batch
+processing concurrency, ordering, and per-file error isolation. These tests run
+offline without an API key or network access.
 
 
 ## Engineering code map
@@ -231,10 +260,21 @@ These are maintained as navigation artifacts. When a feature's execution path ch
 
 ## Roadmap
 
-- OCR support for scanned/photographed datasheets
-- In-app template editor (add/edit fields through a form, not just JSON)
-- Batch processing of multiple OEM datasheets at once
-- Export consolidated report to Excel/SAP-ready format
+These are future priorities; they should not be interpreted as existing,
+production-ready capabilities.
+
+- Improve OCR confidence reporting and evidence-to-field alignment for
+  scanned or low-quality documents.
+- Track vendor-package completeness across datasheets, drawings, certificates,
+  inspection and test plans, and test reports.
+- Compare document revisions and highlight changes affecting engineering
+  requirements or previously reviewed fields.
+- Check consistency across related documents and support technical-deviation
+  tracking with ownership and closure evidence.
+- Expand configurable templates across EPC disciplines, with discipline-
+  specific requirements and validated evaluation cases.
+- Strengthen deployment controls, project-level isolation, and integrations
+  after controlled pilot testing.
 
 ## Synthetic pilot case pack
 

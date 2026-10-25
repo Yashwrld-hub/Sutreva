@@ -8,3 +8,10 @@ outputs
 *.db
 review_store.json
 *.pyc
+
+# Local secrets, databases, and backups
+.env.*
+!.env.example
+*.sqlite
+*.sqlite3
+*.bak_*

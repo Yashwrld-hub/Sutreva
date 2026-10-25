@@ -12,3 +12,7 @@ review_store.json
 *.bak_*
 *.sqlite3
 *.sqlite
+
+# Environment files; keep the example template
+.env.*
+!.env.example

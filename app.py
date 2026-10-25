@@ -507,7 +507,7 @@ if active_view == "Audit":
         uploaded_files = st.file_uploader(
             "Upload OEM datasheet(s)", type=["txt", "pdf"],
             accept_multiple_files=True, key="audit_uploader",
-            help="Digitally-created PDFs and plain text files. Scanned images aren't supported yet.",
+            help="Digitally-created PDFs and plain text files. Scanned PDFs may be processed using best-effort OCR; results can be incomplete, so verify critical values against the source document.",
         )
     with col_sample:
         st.write("")
