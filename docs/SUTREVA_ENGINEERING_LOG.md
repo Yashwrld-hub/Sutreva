@@ -2298,3 +2298,10 @@ Sutreva now exposes lightweight per-file processing telemetry without changing t
 
 ### Status
 - Needs Verification
+
+## USE SAMPLE STREAMLIT STATE HOTFIX — 2026-10-25 18:03
+
+- **Issue:** Clicking Use sample populated the source only during that button's rerun. On the subsequent Run audit click, the transient button value was false and the sample disappeared.
+- **Fix:** Persist the selected sample path in Streamlit session state; reload it on every rerun; clear it on template changes, new-audit/demo starts, or when real uploads are selected; provide a Clear sample control; resolve sample paths relative to app.py.
+- **Safety:** Existing app.py and engineering log backed up before modification.
+- **Validation:** The patched app.py was syntax-compiled by the patch script. Run the project test suite and verify Use sample → Run audit in the local Streamlit UI.

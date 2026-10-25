@@ -10,6 +10,7 @@ and file generation lives in exports.py.
 
 import copy
 import time
+from pathlib import Path
 
 import pandas as pd
 import streamlit as st
@@ -155,6 +156,7 @@ def _init_state():
         "template_selector": "Centrifugal Pump Audit",
         "demo_mode": False,
         "demo_pdf_loaded": False,
+        "audit_sample_selected_path": None,
         "audit_processing": False,
     }
     for key, value in defaults.items():
@@ -312,6 +314,7 @@ with st.sidebar:
         st.session_state.lifecycle_context = None
         st.session_state.demo_mode = False
         st.session_state.demo_pdf_loaded = False
+        st.session_state.audit_sample_selected_path = None
         _navigate_to("Audit")
 
     def _start_hackathon_demo():
@@ -321,6 +324,7 @@ with st.sidebar:
         st.session_state.template_selector = "Centrifugal Pump Audit"
         st.session_state.demo_mode = True
         st.session_state.demo_pdf_loaded = False
+        st.session_state.audit_sample_selected_path = None
         _navigate_to("Audit")
 
     st.button(
@@ -481,6 +485,9 @@ if active_view == "Audit":
 
     sample_path = schema.get("sample_file")
     demo_path = schema.get("demo_file")
+    # SUTREVA_USE_SAMPLE_PERSISTENCE_FIX_V1: clear a sample selection when the template changes.
+    if st.session_state.get("audit_sample_selected_path") != sample_path:
+        st.session_state.audit_sample_selected_path = None
     reasoning_enabled = st.toggle(
         "Enable Nemotron engineering reasoning pass",
         value=st.session_state.get("ai_reasoning_enabled", True),
@@ -514,12 +521,24 @@ if active_view == "Audit":
             else ("Load the built-in example datasheet for this template." if sample_path else "This template has no sample file."),
         )
         use_sample = demo_button and not (st.session_state.get("demo_mode") and demo_path)
+        if use_sample and sample_path:
+            # Persist selection so it survives the next Streamlit rerun.
+            st.session_state.audit_sample_selected_path = sample_path
         if demo_button and st.session_state.get("demo_mode") and demo_path:
             st.session_state.demo_pdf_loaded = True
+        if (sample_path and st.session_state.get("audit_sample_selected_path") == sample_path
+                and not st.session_state.get("demo_mode")):
+            if st.button("Clear sample", key="clear_audit_sample", use_container_width=True):
+                st.session_state.audit_sample_selected_path = None
+                st.rerun()
 
     pending_files = []
     pending_pdf_bytes = {}
     pre_errors = []
+
+    # Uploaded documents take precedence; do not unexpectedly audit an old sample too.
+    if uploaded_files and st.session_state.get("audit_sample_selected_path"):
+        st.session_state.audit_sample_selected_path = None
 
     for uf in (uploaded_files or []):
         try:
@@ -541,10 +560,16 @@ if active_view == "Audit":
         except OSError as e:
             st.error(f"Couldn't open the demo PDF: {e}")
 
-    if use_sample and sample_path:
+    # Load the selected sample on every rerun until the user clears it or changes template.
+    selected_sample_path = st.session_state.get("audit_sample_selected_path")
+    if (selected_sample_path and selected_sample_path == sample_path
+            and not st.session_state.get("demo_mode")):
         try:
-            with open(sample_path, "r", encoding="utf-8") as f:
-                pending_files.append((sample_path.split("/")[-1], f.read()))
+            sample_file_path = Path(selected_sample_path)
+            if not sample_file_path.is_absolute():
+                sample_file_path = Path(__file__).resolve().parent / sample_file_path
+            with sample_file_path.open("r", encoding="utf-8") as f:
+                pending_files.append((sample_file_path.name, f.read()))
         except OSError as e:
             st.error(f"Couldn't open the sample file: {e}")
 
