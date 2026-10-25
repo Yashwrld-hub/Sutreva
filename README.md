@@ -15,6 +15,16 @@ appropriate templates, requirements, and validation.
 
 Built for the Nebius x NVIDIA Global AI Hackathon.
 
+## 🚀 Live Demo
+
+**Try Sutreva:** [Launch the Live Application](https://yashwrld-hub-sutreva-app-72rkuc.streamlit.app/)
+
+- **Live Application:** https://yashwrld-hub-sutreva-app-72rkuc.streamlit.app/
+- **Source Code:** https://github.com/Yashwrld-hub/Sutreva
+- **License:** [MIT License](https://github.com/Yashwrld-hub/Sutreva/blob/main/LICENSE)
+
+Explore the application to upload engineering documents, run an audit, review discrepancies and supporting evidence, and export structured audit reports.
+
 ## How this differs from general-purpose PDF extraction tools
 
 Generic AI document-extraction products (e.g. invoice/receipt extractors aimed
