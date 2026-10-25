@@ -7,3 +7,8 @@ __pycache__/
 outputs/
 review_store.json
 *.db
+
+# Local backups and review databases
+*.bak_*
+*.sqlite3
+*.sqlite
