@@ -1,7 +1,8 @@
-Sutreva — Evidence-Backed Engineering Document Intelligence
+**Sutreva — Evidence-Backed Engineering Document Intelligence**
 Sutreva turns OEM equipment documents into reviewable engineering audit findings. It uses NVIDIA Nemotron through Nebius Token Factory to extract technical data and, when enabled, perform a second evidence-grounded reasoning pass. A deterministic rules engine then checks extracted values against configurable, equipment-specific requirements. Engineers can investigate exceptions, inspect available evidence, record review dispositions, and export audit reports.
 
-Sutreva is designed for rotating-equipment and maintenance workflows, including centrifugal pumps, mechanical seals, lubrication lists, and structured equipment registers.
+Sutreva is designed for engineering, procurement, and construction (EPC) workflows across multiple disciplines, helping teams validate technical specifications, review vendor documentation, identify discrepancies against project requirements, and maintain traceable engineering audit records.
+
 Engineering boundary: Sutreva supports engineering review; it does not approve equipment or replace a qualified engineer. Model-generated values and explanations must be verified against the source documents and applicable project requirements before sign-off.
 
 Why this is more than PDF extraction
